@@ -22,14 +22,15 @@
         </collision>
         <inertial>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            <mass value="0.049269"/>
+            <inertia ixx="1.14596769e-4" ixy="-5.431e-11" ixz="-1.451e-11" iyy="2.653e-5" iyz="4.381e-6" izz="1.372e-4"/>
         </inertial>
     </link>
     <joint name="base_to_chassi" type="fixed">
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <parent link="base_link"/>
         <child link="chassi"/>
+        <axis xyz="0.0 1.0 0.0"/>
     </joint>  
 
 
@@ -50,16 +51,18 @@
         </collision>
         <inertial>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            <mass value="0.025"/>
+            <inertia ixx="1.564e-5" ixy="1.38055957e-15" ixz="3.31600822e-15" iyy="9.66657107e-6" iyz="-1.38581057e-15" izz="9.66701021e-6"/>
         </inertial>
     </link>
+
     <joint name="base_to_left_wheel" type="continuous">
         <origin xyz="0.048790 0.019314 -0.015708" rpy="0.0 0.0 0.0"/>
         <parent link="chassi"/>
         <child link="left_wheel"/>
         <axis xyz="1.0 0.0 0.0"/> <!--indicate the wheel will rotate in x axis-->
     </joint>
+
     <transmission name="trans_left_wheel">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="base_to_left_wheel">
@@ -90,16 +93,18 @@
         </collision>
         <inertial>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 3.14"/>
-            <mass value="0.0"/>
-            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            <mass value="0.025"/>
+            <inertia ixx="1.564e-5" ixy="1.38055957e-15" ixz="3.31600822e-15" iyy="9.66657107e-6" iyz="-1.38581057e-15" izz="9.66701021e-6"/>
         </inertial>
     </link>
+
     <joint name="base_to_right_wheel" type="continuous">
         <origin xyz="-0.048332 0.021179 -0.015706" rpy="0.0 0.0 0.0"/>
         <parent link="chassi"/>
         <child link="right_wheel"/>
         <axis xyz="1.0 0.0 0.0"/>  <!--indicate the wheel will rotate in x axis-->
     </joint>
+
     <transmission name="trans_right_wheel">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="base_to_right_wheel">
@@ -127,8 +132,8 @@
         </collision>                                                                    
         <inertial>                                                                    
             <origin xyz="0 0 0" rpy="3.14 0 0"/>                                                                   
-            <mass value="0.0"/>                                                                   
-            <inertia ixx="0.0"  ixy="0.0"  ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />                                                                   
+            <mass value="0.011"/>                                                                   
+            <inertia ixx="1.812e-6"  ixy="-1.199e-11"  ixz="-4.448e-9" iyy="1.783e-6" iyz="-1.755e-9" izz="9.698e-7" />                                                                   
         </inertial>                                                                   
     </link>                                  
 
@@ -156,8 +161,8 @@
         </collision>                                                                    
         <inertial>                                                                    
             <origin xyz="0 0 0" rpy="0 0 0"/>                                                                   
-            <mass value="0"/>                                                                   
-            <inertia ixx="0.0"  ixy="0.0"  ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />                                                                   
+            <mass value="0.002"/>                                                                   
+            <inertia ixx="8.024e-8"  ixy="0.000e+0"  ixz="0.000e+0" iyy="8.024e-8" iyz="1.949e-16" izz="8.320e-8"/>                                                                   
         </inertial>                                                                   
     </link>                                                                   
 

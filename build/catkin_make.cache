@@ -1,2 +1,2 @@
-gazebo_simulation:gazebo_urdf
+gazebo_sim:gazebo_simulation:gazebo_urdf
 -DCATKIN_DEVEL_PREFIX=/home/jess/simulation_ws/devel -DCMAKE_INSTALL_PREFIX=/home/jess/simulation_ws/install -G Unix Makefiles
