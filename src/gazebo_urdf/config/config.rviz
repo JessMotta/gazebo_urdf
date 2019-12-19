@@ -78,11 +78,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        pivot:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         pivot_wheel:
           Alpha: 1
           Show Axes: false
@@ -110,8 +105,6 @@ Visualization Manager:
           Value: true
         left_wheel:
           Value: true
-        pivot:
-          Value: true
         pivot_wheel:
           Value: true
         right_wheel:
@@ -126,9 +119,8 @@ Visualization Manager:
           chassi:
             left_wheel:
               {}
-            pivot:
-              pivot_wheel:
-                {}
+            pivot_wheel:
+              {}
             right_wheel:
               {}
       Update Interval: 0
@@ -161,7 +153,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.48629432916641235
+      Distance: 0.7651935815811157
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -176,10 +168,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3653982877731323
+      Pitch: 0.22539807856082916
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.273566246032715
+      Yaw: 5.513588905334473
     Saved: ~
 Window Geometry:
   Displays:

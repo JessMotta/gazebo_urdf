@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<robot name="robot_diff_wheel" xmlns:xacro="http://ros.org/wiki/xacro" >
+
+<xacro:macro name="robot_diff_wheel" params="side_wheel *joint_roda_pose *mesh_pose *joint_motor_pose">
+<!--
+########################################################################################
+Modelagem da roda "link" "joint" "transmission" "gazebo"
+########################################################################################
+-->
+	<link name="roda_${side_wheel}">
+		<visual>
+			<xacro:insert_block name="mesh_pose"/>
+			<geometry>
+				<mesh filename="package://gazebo_urdf/meshes/Roue_65mm.dae" />
+			</geometry>
+		</visual>
+		<collision>
+			<xacro:insert_block name="mesh_pose"/>
+			<geometry>
+				<mesh filename="package://gazebo_urdf/meshes/Roue_65mm.dae" />
+			</geometry>
+		</collision>
+		<inertial>
+			<xacro:insert_block name="mesh_pose"/>
+			<mass value="0.025"/>
+			<inertia ixx="1.564e-5" ixy="1.38055957e-15" ixz="3.31600822e-15" iyy="9.66657107e-6" iyz="-1.38581057e-15" izz="9.66701021e-6" />
+		</inertial>
+	</link>
+
+	<joint name="base_to_roda_${side_wheel}" type="continuous">
+		<parent link="chassi"/>
+		<child link="roda_${side_wheel}"/>
+		<xacro:insert_block name="joint_roda_pose"/>
+		<axis xyz="1 0 0" rpy="0 0 0" />
+	</joint>
+
+	<transmission name="trans_roda_${side_wheel}">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="base_to_roda_${side_wheel}">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="roda_${side_wheel}_motor">
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+	<gazebo reference="roda_${side_wheel}">
+		<mu1 value="1.0"/>
+		<mu2 value="1.0"/>
+		<kp value="10000000.0" />
+		<kd value="1.0" />
+		<fdir1 value="1 0 0"/>
+	</gazebo>
+
+<!--
+########################################################################################
+Modelagem da motor direita "link" "joint"
+########################################################################################
+-->
+	<link name="motor_${side_wheel}">                                                                                                                                         
+		<visual>                                                                    
+			<origin xyz="0 0 0" rpy="0 0 0" />                                                   
+			<geometry>                                                                   
+				<mesh filename="package://gazebo_urdf/meshes/Roue_65mm.dae" />     
+			</geometry>                                                                   
+		</visual>                                                                   
+		<collision>                                                                   
+			<origin xyz="0 0 0" rpy="0 0 0" />                                                    
+			<geometry>                                                                   
+				<mesh filename="package://gazebo_urdf/meshes/Roue_65mm.dae" />     
+			</geometry>                                                                   
+		</collision>                                                                    
+		<inertial>                                                                    
+			<origin xyz="0 0 0" rpy="0 0 0"/>                                                                   
+			<mass value="0.025"/>                                                                   
+			<inertia ixx="1.564e-5" ixy="1.38055957e-15" ixz="3.31600822e-15" iyy="9.66657107e-6" iyz="-1.38581057e-15" izz="9.66701021e-6" />                                                                   
+		</inertial>                                                                   
+	</link>                                                                   
+
+	<joint name="base_to_motor_${side_wheel}" type="fixed">
+		<parent link="chassi"/>
+		<child link="motor_${side_wheel}"/>
+		<xacro:insert_block name="joint_motor_pose"/>
+	</joint>
+
+</xacro:macro>
+
+</robot>

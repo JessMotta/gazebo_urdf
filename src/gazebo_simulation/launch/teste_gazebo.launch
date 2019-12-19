@@ -30,5 +30,6 @@
           -model / 
           -param robot_description"/>
 
+  <include file="$(find gazebo_control)/launch/robot_diff_learning_control.launch"/>
 
 </launch>
