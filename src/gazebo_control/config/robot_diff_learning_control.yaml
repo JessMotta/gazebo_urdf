@@ -7,8 +7,8 @@ joint_state_controller:
 robot_diff_controller:
   type: "diff_drive_controller/DiffDriveController"
   
-  left_wheel: base_to_left_wheel
-  right_wheel: base_to_right_wheel
+  left_wheel: base_to_roda_esquerda
+  right_wheel: base_to_roda_direita
   
   wheel_separation: 0.12172
   wheel_radius: 0.02614

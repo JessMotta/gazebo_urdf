@@ -38,7 +38,7 @@
     </joint>  
 
 
-<!--LEFT WHEEL-->
+<!--left WHEEL-->
 
     <!-- <link name="left_wheel">
         <visual>
@@ -72,16 +72,14 @@
 Modelagem das rodas "link" "joint" "transmission" "gazebo"
 ########################################################################################
 -->
-    <xacro:robot_diff_wheel side_wheel="left">
-        <origin xyz="0.00 0.0 -0.0" rpy="0 0 0" /> 
-        <origin xyz="0.048790 0.019314 -0.015708" rpy="0.0 0.0 0.0"/>
-        <origin xyz="0.00 0.0 -0.0" rpy="0 0 0" />
+    <xacro:robot_diff_wheel lado_roda="esquerda">
+        <origin xyz="0.049 0.019 -0.016" rpy="0 0 0" /> 
+        <origin xyz="0 0 0" rpy="0.0 0.0 0.0"/>
     </xacro:robot_diff_wheel>
 
-    <xacro:robot_diff_wheel side_wheel="right">
-        <origin xyz="0.00 -0.00 -0.00" rpy="0 0 3.14" />
-        <origin xyz="-0.048332 0.021179 -0.015706" rpy="0.0 0.0 0.0"/>
-        <origin xyz="0.00 -0.00 -0.00" rpy="0 0 0" />
+    <xacro:robot_diff_wheel lado_roda="direita">
+        <origin xyz="-0.048 0.021 -0.016" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0.0 0.0 3.14"/>
     </xacro:robot_diff_wheel>
 
 
@@ -208,11 +206,27 @@ Modelagem das rodas "link" "joint" "transmission" "gazebo"
 ros_control gazebo plugin 
 ******************************************************************************************
 -->
-    <gazebo>
+    <!-- <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
             <robotNamespace>/</robotNamespace>
             <legacyModeNS>true</legacyModeNS>
         </plugin>
-    </gazebo>
+    </gazebo> -->
+<!--gazebo diferential drive plugin-->
+  <gazebo>
+    <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>20</updateRate>
+      <leftJoint>base_to_roda_esquerda</leftJoint>
+      <rightJoint>base_to_roda_direita</rightJoint> 
+      <wheelSeparation>0.4</wheelSeparation>
+      <wheelDiameter>0.2</wheelDiameter>
+      <torque>0.1</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>link_chassis</robotBaseFrame>
+    </plugin>
+  </gazebo>
 
 </robot>
